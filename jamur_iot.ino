@@ -118,6 +118,11 @@ void handleResetProcedure() {
   
   // Reset WiFi Manager
   wifiManager.resetSettings();
+  // Buat SSID unik berdasarkan IMEI
+  char ssid[32];
+  sprintf(ssid, "JamurIoT_%s", IMEI.c_str());
+  
+  wifiManager.startConfigPortal(ssid,""); 
   Serial.println("♻️ Konfigurasi WiFi direset");
   
   // Juga hapus kredensial WiFi yang tersimpan
